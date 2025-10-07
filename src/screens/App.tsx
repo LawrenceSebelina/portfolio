@@ -535,7 +535,7 @@ export const App = (): JSX.Element => {
                                             <motion.img
                                                 className="w-6 h-6"
                                                 alt="Star"
-                                                src="/star-svgrepo-com-23.svg"
+                                                src="./star-svgrepo-com-23.svg"
                                                 animate={{ rotate: 0 }}
                                                 transition={{
                                                     duration: 0,
@@ -898,7 +898,7 @@ export const App = (): JSX.Element => {
                                         <motion.img
                                             className="w-12 md:w-[61px] h-12 md:h-[61px] mx-auto mb-6"
                                             alt="Star"
-                                            src="/star-svgrepo-com-23.svg"
+                                            src="./star-svgrepo-com-23.svg"
                                             animate={{ rotate: 0 }}
                                             transition={{
                                                 duration: 0,
@@ -916,7 +916,7 @@ export const App = (): JSX.Element => {
                                                         key={starIndex}
                                                         className="w-6 h-6"
                                                         alt="Star"
-                                                        src="/star-svgrepo-com-23.svg"
+                                                        src="./star-svgrepo-com-23.svg"
                                                         initial={{
                                                             opacity: 0,
                                                             scale: 0,
@@ -1067,7 +1067,7 @@ export const App = (): JSX.Element => {
                         <motion.img
                             className="w-[120px] md:w-[153px] h-10 md:h-14 object-cover"
                             alt="Logo"
-                            src="/group-21-2.png"
+                            src="./group-21-2.png"
                             whileHover={{ scale: 1.05 }}
                             transition={{
                                 type: "spring",
@@ -1078,7 +1078,7 @@ export const App = (): JSX.Element => {
                         <motion.img
                             className="w-[100px] md:w-[121px] h-6 md:h-[27px]"
                             alt="Social Links"
-                            src="/frame-544.svg"
+                            src="./frame-544.svg"
                             whileHover={{ scale: 1.05 }}
                             transition={{
                                 type: "spring",
@@ -1101,8 +1101,8 @@ export const App = (): JSX.Element => {
                                 // src="/group-21-2.png"
                                 src={
                                     theme === "dark"
-                                        ? "/logo.png"
-                                        : "/logo-black.png"
+                                        ? "./logo.png"
+                                        : "./logo-black.png"
                                 }
                                 alt="Logo"
                                 className="w-[120px] md:w-[153px] h-10 md:h-14 object-cover"
