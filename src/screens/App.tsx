@@ -36,25 +36,25 @@ const navigationItems = [
 
 const statsData = [
     {
-        icon: "/browser-logo.png",
+        icon: "./browser-logo.png",
         number: 30,
         label: "Websites Built",
         suffix: "+",
     },
     {
-        icon: "/hourglass-time-logo.svg",
+        icon: "./hourglass-time-logo.svg",
         number: 3,
         label: "Years of Experience",
         suffix: "+",
     },
     {
-        icon: "/networking-group-logo.svg",
+        icon: "./networking-group-logo.svg",
         number: 5,
         label: "Clients Served",
         suffix: "+",
     },
     {
-        icon: "/megaphone-logo.svg",
+        icon: "./megaphone-logo.svg",
         number: 5,
         label: "Client Feedback",
         hasStar: true,
@@ -63,21 +63,21 @@ const statsData = [
 
 const servicesData = [
     {
-        icon: "/responsive-logo.png",
+        icon: "./responsive-logo.png",
         title: "Website Development",
         description:
             "I build custom websites from the ground up, focusing on performance, responsiveness, and user experience. From concept to launch, I transform ideas and mockups into functional, visually appealing websites that align with your brand and goals.",
         bgColor: "bg-neutral-900",
     },
     {
-        icon: "/web-development-logo.png",
+        icon: "./web-development-logo.png",
         title: "Website Redesign/Rebuild",
         description:
             "When your website no longer represents your business, I give it a complete makeover. By modernizing layouts, improving responsiveness, and adding new features, I ensure your site not only looks better but also performs more effectively.",
         bgColor: "bg-neutral-900",
     },
     {
-        icon: "/world-map-logo.svg",
+        icon: "./world-map-logo.svg",
         title: "Web Support & Maintenance",
         description:
             "Keeping your website secure and up to date is essential. I provide ongoing support, updates, fixes, and performance optimizations to ensure your site remains fast, reliable, and hassle-free long after it’s launched.",
@@ -86,23 +86,23 @@ const servicesData = [
 ];
 
 const toolsData = [
-    { src: "/wordpress-logo.png", alt: "WordPress Logo" },
-    { src: "/elementor-logo.png", alt: "Elementor Logo" },
-    { src: "/wix-logo.png", alt: "Wix logo edited" },
-    { src: "/figma-logo.png", alt: "Figma Logo" },
-    { src: "/adobe-xd-logo.png", alt: "Adobe XD Logo" },
-    { src: "/photoshop-logo.png", alt: "Photoshop Logo" },
-    { src: "/html-logo.png", alt: "Html logo edited" },
-    { src: "/css-logo.png", alt: "Css logo edited" },
-    { src: "/javascript-logo.png", alt: "Javascript logo" },
-    { src: "/php-logo.png", alt: "Php logo" },
-    { src: "/mysql-logo.png", alt: "Mysql logo edited" },
-    { src: "/cpanel-logo.png", alt: "Cpanel logo" },
+    { src: "./wordpress-logo.png", alt: "WordPress Logo" },
+    { src: "./elementor-logo.png", alt: "Elementor Logo" },
+    { src: "./wix-logo.png", alt: "Wix logo edited" },
+    { src: "./figma-logo.png", alt: "Figma Logo" },
+    { src: "./adobe-xd-logo.png", alt: "Adobe XD Logo" },
+    { src: "./photoshop-logo.png", alt: "Photoshop Logo" },
+    { src: "./html-logo.png", alt: "Html logo edited" },
+    { src: "./css-logo.png", alt: "Css logo edited" },
+    { src: "./javascript-logo.png", alt: "Javascript logo" },
+    { src: "./php-logo.png", alt: "Php logo" },
+    { src: "./mysql-logo.png", alt: "Mysql logo edited" },
+    { src: ".cpanel-logo.png", alt: "Cpanel logo" },
 ];
 
 const projectsData = [
     {
-        image: "/build-learn-thrive-website.webp",
+        image: "./build-learn-thrive-website.webp",
         title: "Build Learn Thrive",
         category: "WEB DEVELPOMENT",
         // client: "Simplicity",
@@ -112,7 +112,7 @@ const projectsData = [
         link: "Visit Site",
     },
     {
-        image: "/spirit-journeys-worldwide-website.webp",
+        image: "./spirit-journeys-worldwide-website.webp",
         title: "Spirit Journeys Worldwide ",
         category: "WEB DEVELPOMENT",
         // client: "Simplicity",
@@ -122,7 +122,7 @@ const projectsData = [
         link: "https://spiritjourneysworldwide.com/",
     },
     {
-        image: "/event-hire-professionals-website.webp",
+        image: "./event-hire-professionals-website.webp",
         title: "Event Hire Professionals",
         category: "WEB DEVELPOMENT",
         // client: "Simplicity",
@@ -132,7 +132,7 @@ const projectsData = [
         link: "https://www.eventhireprofessionals.com/",
     },
     {
-        image: "/fitness-website.webp",
+        image: "./fitness-website.webp",
         title: "Fitness",
         category: "WEB DEVELPOMENT",
         // client: "Simplicity",
@@ -142,7 +142,7 @@ const projectsData = [
         link: "https://projects.lawrencesebelina.com/fitness/",
     },
     {
-        image: "/viszila-website.webp",
+        image: "./viszila-website.webp",
         title: "Viszila",
         category: "WEB DEVELPOMENT",
         // client: "Simplicity",
@@ -152,7 +152,7 @@ const projectsData = [
         link: "https://projects.lawrencesebelina.com/viszila/",
     },
     {
-        image: "/pinnacle-law-website.webp",
+        image: "./pinnacle-law-website.webp",
         title: "Pinnacle Law",
         category: "WEB DEVELPOMENT",
         // client: "Simplicity",
@@ -271,7 +271,9 @@ export const App = (): JSX.Element => {
                     {/* Logo */}
                     <motion.img
                         // src="/group-21-2.png"
-                        src={theme === "dark" ? "/logo.png" : "/logo-black.png"}
+                        src={
+                            theme === "dark" ? "./logo.png" : "./logo-black.png"
+                        }
                         alt="Logo"
                         className="w-[120px] md:w-[153px] h-10 md:h-14 object-cover"
                         whileHover={{ scale: 1.05 }}
