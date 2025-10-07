@@ -558,7 +558,7 @@ export const App = (): JSX.Element => {
                             <motion.img
                                 className="w-full max-w-[100%] h-auto mx-auto"
                                 alt="Lawrence Sebelina"
-                                src="/lawrence-sebelina.png"
+                                src="./lawrence-sebelina.png"
                                 // whileHover={{ scale: 1.05, rotate: 2 }}
                                 transition={{
                                     type: "spring",
