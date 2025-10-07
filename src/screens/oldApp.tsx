@@ -633,7 +633,7 @@ export const App = (): JSX.Element => {
                             {/* Experience Card */}
 
                             <AnimatedCard
-                                className="md:col-span-1 bg-[url(/rectangle-43.png)] bg-cover bg-center max-w-[100%] h-full mx-auto rounded-[5px] border"
+                                className="md:col-span-1 bg-[url(/man-browsing-using-his-computer.png)] bg-cover bg-center max-w-[100%] h-full mx-auto rounded-[5px] border"
                                 hoverScale={1}
                             >
                                 <CardContent className="bg-primary/75 rounded-[5px] h-full flex flex-col items-center justify-center text-center p-6 md:p-8">
