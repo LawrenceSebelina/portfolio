@@ -1,0 +1,210 @@
+@tailwind components;
+@tailwind utilities;
+
+/* Theme variables */
+:root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 47.4% 11.2%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 47.4% 11.2%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 47.4% 11.2%;
+    --primary: 18 87% 54%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 18 87% 54%;
+}
+
+.dark {
+    --background: 224 71.4% 4.1%;
+    --foreground: 210 40% 98%;
+    --card: 224 71.4% 4.1%;
+    --card-foreground: 210 40% 98%;
+    --popover: 224 71.4% 4.1%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 18 87% 54%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 215 27.9% 16.9%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 215 27.9% 16.9%;
+    --muted-foreground: 217.9 10.6% 64.9%;
+    --accent: 215 27.9% 16.9%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 215 27.9% 16.9%;
+    --input: 215 27.9% 16.9%;
+    --ring: 18 87% 54%;
+}
+
+@layer components {
+    .all-\[unset\] {
+        all: unset;
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: hsl(var(--muted));
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: hsl(var(--primary));
+        border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: hsl(var(--primary) / 0.8);
+    }
+}
+
+:root {
+    --animate-spin: spin 1s linear infinite;
+}
+
+.animate-fade-in {
+    animation: fade-in 1s var(--animation-delay, 0s) ease forwards;
+}
+
+.animate-fade-up {
+    animation: fade-up 1s var(--animation-delay, 0s) ease forwards;
+}
+
+.animate-marquee {
+    animation: marquee var(--duration) infinite linear;
+}
+
+.animate-marquee-vertical {
+    animation: marquee-vertical var(--duration) linear infinite;
+}
+
+.animate-shimmer {
+    animation: shimmer 8s infinite;
+}
+
+.animate-spin {
+    animation: var(--animate-spin);
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(1turn);
+    }
+}
+
+@keyframes image-glow {
+    0% {
+        opacity: 0;
+        animation-timing-function: cubic-bezier(0.74, 0.25, 0.76, 1);
+    }
+
+    10% {
+        opacity: 0.7;
+        animation-timing-function: cubic-bezier(0.12, 0.01, 0.08, 0.99);
+    }
+
+    to {
+        opacity: 0.4;
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes fade-up {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes shimmer {
+    0%,
+    90%,
+    to {
+        background-position: calc(-100% - var(--shimmer-width)) 0;
+    }
+
+    30%,
+    60% {
+        background-position: calc(100% + var(--shimmer-width)) 0;
+    }
+}
+
+@keyframes marquee {
+    0% {
+        transform: translate(0);
+    }
+
+    to {
+        transform: translateX(calc(-100% - var(--gap)));
+    }
+}
+
+@keyframes marquee-vertical {
+    0% {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(calc(-100% - var(--gap)));
+    }
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+
+    body {
+        @apply bg-background text-foreground;
+        font-feature-settings: "rlig" 1, "calt" 1;
+        scroll-behavior: smooth;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    /* Focus styles */
+    *:focus-visible {
+        outline: 2px solid hsl(var(--primary));
+        outline-offset: 2px;
+    }
+
+    /* Selection styles */
+    ::selection {
+        background: hsl(var(--primary) / 0.2);
+        color: hsl(var(--primary-foreground));
+    }
+}
