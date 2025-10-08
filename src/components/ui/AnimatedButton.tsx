@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Button } from "./Button";
-import { cn } from "../../lib/Utils";
+import { cn } from "../../library/Utils";
 
 interface AnimatedButtonProps
     extends React.ButtonHTMLAttributes<HTMLButtonElement> {

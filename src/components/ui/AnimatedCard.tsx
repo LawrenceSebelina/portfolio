@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Card, CardContent } from "./Card";
-import { cn } from "../../lib/Utils";
+import { cn } from "../../library/Utils";
 
 interface AnimatedCardProps {
     children: React.ReactNode;

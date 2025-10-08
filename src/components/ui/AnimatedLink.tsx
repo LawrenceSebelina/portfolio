@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { cn } from "../../lib/Utils"; // adjust the path to your cn helper
+import { cn } from "../../library/Utils"; // adjust the path to your cn helper
 
 interface AnimatedLinkProps
     extends React.AnchorHTMLAttributes<HTMLAnchorElement> {

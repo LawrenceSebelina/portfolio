@@ -13,7 +13,7 @@ import { ThemeToggle } from "../components/ui/ThemeToggle";
 import { ScrollVideoBanner } from "../components/ui/ScrollVideoBanner";
 import { FloatingElements } from "../components/ui/FloatingElements";
 import { SectionReveal } from "../components/ui/SectionReveal";
-import { useTheme } from "../hooks/UseTheme";
+import { useTheme } from "../context/UseTheme";
 import {
     Menu,
     X,
@@ -22,8 +22,10 @@ import {
     ExternalLink,
     Facebook,
     Linkedin,
+    Github,
 } from "lucide-react";
 import { useState, useEffect } from "react";
+import { useThemeContext } from "../context/ThemeContext";
 
 const navigationItems = [
     { label: "About", href: "#about" },
@@ -34,25 +36,25 @@ const navigationItems = [
 
 const statsData = [
     {
-        icon: "/browser-svgrepo-com-1.png",
+        icon: "./browser-logo.png",
         number: 30,
         label: "Websites Built",
         suffix: "+",
     },
     {
-        icon: "/hourglass-time-svgrepo-com-1.svg",
+        icon: "./hourglass-time-logo.svg",
         number: 3,
         label: "Years of Experience",
         suffix: "+",
     },
     {
-        icon: "/networking-group-svgrepo-com-1.svg",
+        icon: "./networking-group-logo.svg",
         number: 5,
         label: "Clients Served",
         suffix: "+",
     },
     {
-        icon: "/megaphone-svgrepo-com-1.svg",
+        icon: "./megaphone-logo.svg",
         number: 5,
         label: "Client Feedback",
         hasStar: true,
@@ -61,73 +63,103 @@ const statsData = [
 
 const servicesData = [
     {
-        icon: "/responsive-svgrepo-com-1.png",
+        icon: "./responsive-logo.png",
         title: "Website Development",
         description:
-            "I specialize in bringing ideas to life by turning Figma or Adobe XD mockups into live, pixel-perfect websites. My focus is not just on design accuracy but also on building websites that are fast-loading, fully responsive, and easy to navigate.",
-        bgColor: "bg-[#e85729e6]",
-    },
-    {
-        icon: "/web-development-svgrepo-com-1.png",
-        title: "Web Design & Prototyping",
-        description:
-            "Simplicity in form, power in function. Design that does more than look good. Simplicity in form, power in function. Design that does more than look good.",
+            "I build custom websites from the ground up, focusing on performance, responsiveness, and user experience. From concept to launch, I transform ideas and mockups into functional, visually appealing websites that align with your brand and goals.",
         bgColor: "bg-neutral-900",
     },
     {
-        icon: "/world-map-svgrepo-com-1.svg",
-        title: "Website Deployment",
+        icon: "./web-development-logo.png",
+        title: "Website Redesign/Rebuild",
         description:
-            "Launching a website requires more than just design — it requires careful deployment and ongoing management. I handle everything from domain setup and hosting configuration to DNS management, SSL certification, and cPanel tasks.",
+            "When your website no longer represents your business, I give it a complete makeover. By modernizing layouts, improving responsiveness, and adding new features, I ensure your site not only looks better but also performs more effectively.",
+        bgColor: "bg-neutral-900",
+    },
+    {
+        icon: "./world-map-logo.svg",
+        title: "Web Support & Maintenance",
+        description:
+            "Keeping your website secure and up to date is essential. I provide ongoing support, updates, fixes, and performance optimizations to ensure your site remains fast, reliable, and hassle-free long after it’s launched.",
         bgColor: "bg-neutral-900",
     },
 ];
 
 const toolsData = [
-    { src: "/group-550.png", alt: "Group" },
-    { src: "/elementor-logo-edited-1.png", alt: "Elementor logo" },
-    { src: "/group.png", alt: "Group" },
-    { src: "/group-1.png", alt: "Group" },
-    { src: "/wix-logo-edited-1.png", alt: "Wix logo edited" },
-    { src: "/image-2.png", alt: "Image" },
-    { src: "/html-logo-edited-1.png", alt: "Html logo edited" },
-    { src: "/css-logo-edited-1.png", alt: "Css logo edited" },
-    { src: "/javascript-logo-edited-1.png", alt: "Javascript logo" },
-    { src: "/php-logo-1.png", alt: "Php logo" },
-    { src: "/mysql-logo-edited-1.png", alt: "Mysql logo edited" },
-    { src: "/cpanel-logo-1.png", alt: "Cpanel logo" },
+    { src: "./wordpress-logo.png", alt: "WordPress Logo" },
+    { src: "./elementor-logo.png", alt: "Elementor Logo" },
+    { src: "./wix-logo.png", alt: "Wix logo edited" },
+    { src: "./figma-logo.png", alt: "Figma Logo" },
+    { src: "./adobe-xd-logo.png", alt: "Adobe XD Logo" },
+    { src: "./photoshop-logo.png", alt: "Photoshop Logo" },
+    { src: "./html-logo.png", alt: "Html logo edited" },
+    { src: "./css-logo.png", alt: "Css logo edited" },
+    { src: "./javascript-logo.png", alt: "Javascript logo" },
+    { src: "./php-logo.png", alt: "Php logo" },
+    { src: "./mysql-logo.png", alt: "Mysql logo edited" },
+    { src: ".cpanel-logo.png", alt: "Cpanel logo" },
 ];
 
 const projectsData = [
     {
-        image: "/rectangle-95.png",
+        image: "./build-learn-thrive-website.webp",
         title: "Build Learn Thrive",
         category: "WEB DEVELPOMENT",
-        client: "Simplicity",
-        date: "January 2024",
+        // client: "Simplicity",
+        // date: "January 2024",
         description:
-            "Simplicity in form, power in function. Design that does more than look good. Simplicity in form, power in function. Design that does more than look good.",
+            "Build Learn Thrive provides child-focused occupational, speech, and physical therapy with a caring team and family-centered values.",
         link: "Visit Site",
     },
     {
-        image: "/rectangle-95.png",
-        title: "Build Learn Thrive",
+        image: "./spirit-journeys-worldwide-website.webp",
+        title: "Spirit Journeys Worldwide ",
         category: "WEB DEVELPOMENT",
-        client: "Simplicity",
-        date: "January 2024",
+        // client: "Simplicity",
+        // date: "January 2024",
         description:
-            "Simplicity in form, power in function. Design that does more than look good. Simplicity in form, power in function. Design that does more than look good.",
-        link: "Visit Site",
+            "Spirit Journeys Worldwide offers customized tours and travel experiences across the globe, from gorilla trekking to scenic adventures.",
+        link: "https://spiritjourneysworldwide.com/",
     },
     {
-        image: "/rectangle-95.png",
-        title: "Build Learn Thrive",
+        image: "./event-hire-professionals-website.webp",
+        title: "Event Hire Professionals",
         category: "WEB DEVELPOMENT",
-        client: "Simplicity",
-        date: "January 2024",
+        // client: "Simplicity",
+        // date: "January 2024",
         description:
-            "Simplicity in form, power in function. Design that does more than look good. Simplicity in form, power in function. Design that does more than look good.",
-        link: "Visit Site",
+            "Event Hire Professionals delivers creative event production and equipment rentals, showcasing past projects and a diverse client list.",
+        link: "https://www.eventhireprofessionals.com/",
+    },
+    {
+        image: "./fitness-website.webp",
+        title: "Fitness",
+        category: "WEB DEVELPOMENT",
+        // client: "Simplicity",
+        // date: "January 2024",
+        description:
+            "A sleek fitness website promoting classes, expert trainers, and flexible membership plans, designed to inspire workouts and showcase gym facilities.",
+        link: "https://projects.lawrencesebelina.com/fitness/",
+    },
+    {
+        image: "./viszila-website.webp",
+        title: "Viszila",
+        category: "WEB DEVELPOMENT",
+        // client: "Simplicity",
+        // date: "January 2024",
+        description:
+            "Viszila is a stylish sunglasses brand site featuring trendy eyewear, customer testimonials, and easy shopping with warranty registration.",
+        link: "https://projects.lawrencesebelina.com/viszila/",
+    },
+    {
+        image: "./pinnacle-law-website.webp",
+        title: "Pinnacle Law",
+        category: "WEB DEVELPOMENT",
+        // client: "Simplicity",
+        // date: "January 2024",
+        description:
+            "Pinnacle Law offers full-service legal representation, highlighting expertise in personal injury, criminal defense, business, and family law, with easy access to free consultations.",
+        link: "https://projects.lawrencesebelina.com/pinnacle-law/",
     },
 ];
 
@@ -157,14 +189,21 @@ const contactInfo = [
     },
     {
         icon: Linkedin,
-        href: "#",
+        href: "https://www.linkedin.com/in/lawrence-sebelina-75304a253/",
+    },
+    {
+        icon: Github,
+        href: "https://github.com/LawrenceSebelina",
     },
 ];
 
 export const App = (): JSX.Element => {
-    const { theme } = useTheme();
+    // const { theme } = useTheme();
+    const { theme, toggleTheme } = useThemeContext();
+    // console.log("Theme from context:", theme);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [scrollY, setScrollY] = useState(0);
+    const scrolled = scrollY > 50;
 
     useEffect(() => {
         const handleScroll = () => setScrollY(window.scrollY);
@@ -209,25 +248,34 @@ export const App = (): JSX.Element => {
 
             {/* Header */}
             <motion.header
-                className="relative z-50 flex items-center justify-between py-6 max-w-[1140px] mx-auto px-4 md:px-8"
+                // sticky instead of relative for real “sticky header”
+                className={`sticky top-0 z-50 max-w-full px-4 md:px-8  transition-all duration-500 ease-in-out
+                    ${
+                        scrolled
+                            ? "backdrop-blur-md shadow-md py-4" //bg-background/40
+                            : "backdrop-blur-0 shadow-none py-4 md:py-6"
+                    }
+                `}
                 style={{
-                    backgroundColor:
-                        scrollY > 50
-                            ? theme === "dark"
-                                ? "rgba(28, 29, 31, 0.9)"
-                                : "rgba(255, 255, 255, 0.9)"
-                            : "transparent",
-                    backdropFilter: scrollY > 50 ? "blur(10px)" : "none",
+                    backgroundColor: scrolled
+                        ? theme === "dark"
+                            ? "rgba(28,29,31,0.85)"
+                            : "rgba(255,255,255,0.85)"
+                        : "transparent",
                 }}
-                initial={{ y: -100 }}
-                animate={{ y: 0 }}
+                initial={{ y: -80, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.6, ease: "easeOut" }}
             >
-                <div className="flex items-center">
+                <div className="max-w-[1140px] flex items-center justify-between mx-auto">
+                    {/* Logo */}
                     <motion.img
-                        className="w-[120px] md:w-[153px] h-10 md:h-14 object-cover"
+                        // src="/group-21-2.png"
+                        src={
+                            theme === "dark" ? "./logo.png" : "./logo-black.png"
+                        }
                         alt="Logo"
-                        src="/group-21-2.png"
+                        className="w-[120px] md:w-[153px] h-10 md:h-14 object-cover"
                         whileHover={{ scale: 1.05 }}
                         transition={{
                             type: "spring",
@@ -235,42 +283,44 @@ export const App = (): JSX.Element => {
                             damping: 17,
                         }}
                     />
-                </div>
 
-                <nav className="hidden lg:flex items-center gap-8">
-                    {navigationItems.map((item, index) => (
-                        <motion.a
-                            key={index}
-                            href={item.href}
-                            className="[font-family:'Nunito_Sans',Helvetica] font-bold text-foreground text-lg hover:text-primary transition-colors relative group"
-                            whileHover={{ scale: 1.05 }}
-                            initial={{ opacity: 0, y: -20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: index * 0.1 }}
+                    {/* Desktop Nav */}
+                    <nav className="hidden lg:flex items-center gap-8">
+                        {navigationItems.map((item, i) => (
+                            <motion.a
+                                key={i}
+                                href={item.href}
+                                className="font-bold text-lg text-foreground hover:text-primary relative group transition-colors [font-family:'Nunito_Sans',Helvetica]"
+                                whileHover={{ scale: 1.05 }}
+                                initial={{ opacity: 0, y: -20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: i * 0.1 }}
+                            >
+                                {item.label}
+                                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
+                            </motion.a>
+                        ))}
+                    </nav>
+
+                    {/* Actions */}
+                    <div className="flex items-center gap-4">
+                        <ThemeToggle />
+
+                        <AnimatedButton className="hidden md:flex bg-primary hover:bg-primary/90 text-primary-foreground px-6 md:px-10 py-3 md:py-4 h-auto rounded-[5px]">
+                            <span className="font-bold text-sm md:text-lg">
+                                Get Started
+                            </span>
+                        </AnimatedButton>
+
+                        {/* Mobile Menu Button */}
+                        <motion.button
+                            className="lg:hidden p-2"
+                            onClick={() => setIsMenuOpen(!isMenuOpen)}
+                            whileTap={{ scale: 0.95 }}
                         >
-                            {item.label}
-                            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
-                        </motion.a>
-                    ))}
-                </nav>
-
-                <div className="flex items-center gap-4">
-                    <ThemeToggle />
-
-                    <AnimatedButton className="hidden md:flex bg-primary hover:bg-primary/90 text-primary-foreground px-6 md:px-10 py-3 md:py-4 h-auto rounded-[5px]">
-                        <span className="[font-family:'Nunito_Sans',Helvetica] font-bold text-sm md:text-lg">
-                            Get Started
-                        </span>
-                    </AnimatedButton>
-
-                    {/* Mobile Menu Button */}
-                    <motion.button
-                        className="lg:hidden p-2"
-                        onClick={() => setIsMenuOpen(!isMenuOpen)}
-                        whileTap={{ scale: 0.95 }}
-                    >
-                        {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-                    </motion.button>
+                            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                        </motion.button>
+                    </div>
                 </div>
             </motion.header>
 
@@ -293,15 +343,15 @@ export const App = (): JSX.Element => {
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -20 }}
                         >
-                            {navigationItems.map((item, index) => (
+                            {navigationItems.map((item, i) => (
                                 <motion.a
-                                    key={index}
+                                    key={i}
                                     href={item.href}
-                                    className="block py-3 text-lg font-bold text-foreground hover:text-primary transition-colors"
+                                    className="block py-3 text-lg font-bold text-foreground hover:text-primary transition-colors [font-family:'Nunito_Sans',Helvetica]"
                                     onClick={() => setIsMenuOpen(false)}
                                     initial={{ opacity: 0, x: -20 }}
                                     animate={{ opacity: 1, x: 0 }}
-                                    transition={{ delay: index * 0.1 }}
+                                    transition={{ delay: i * 0.1 }}
                                 >
                                     {item.label}
                                 </motion.a>
@@ -485,7 +535,7 @@ export const App = (): JSX.Element => {
                                             <motion.img
                                                 className="w-6 h-6"
                                                 alt="Star"
-                                                src="/star-svgrepo-com-23.svg"
+                                                src="./star-svgrepo-com-23.svg"
                                                 animate={{ rotate: 0 }}
                                                 transition={{
                                                     duration: 0,
@@ -508,7 +558,7 @@ export const App = (): JSX.Element => {
                             <motion.img
                                 className="w-full max-w-[100%] h-auto mx-auto"
                                 alt="Lawrence Sebelina"
-                                src="/img-20240628-1615512x1-25x-1.png"
+                                src="./lawrence-sebelina.png"
                                 // whileHover={{ scale: 1.05, rotate: 2 }}
                                 transition={{
                                     type: "spring",
@@ -566,14 +616,14 @@ export const App = (): JSX.Element => {
             {/* Services Section */}
             <SectionReveal>
                 <section className="relative z-10 py-12 md:py-20 px-4 md:px-8">
-                    <div className="max-w-[1140px] mx-auto text-center">
+                    <div className="max-w-[1140px] mx-auto">
                         <Badge
                             variant="secondary"
                             className="mb-4 bg-primary/10 text-primary text-base"
                         >
                             WHAT I DO
                         </Badge>
-                        <h2 className="[font-family:'Exo_2',Helvetica] font-bold text-3xl md:text-[50px] text-center leading-tight md:leading-normal mb-8 md:mb-16">
+                        <h2 className="[font-family:'Exo_2',Helvetica] font-bold text-3xl md:text-[50px] leading-tight md:leading-normal mb-8 md:mb-16">
                             <span className="text-foreground">How I Can </span>
                             <span className="text-primary">Help You</span>
                         </h2>
@@ -586,7 +636,7 @@ export const App = (): JSX.Element => {
                                     delay={index * 0.2}
                                     hoverScale={1.05}
                                 >
-                                    <CardContent className="p-6 md:p-8 flex flex-col items-center text-center h-full">
+                                    <CardContent className="p-6 md:p-8 flex flex-col h-full">
                                         <motion.img
                                             className="w-16 md:w-[95px] h-16 md:h-[95px] mb-6"
                                             alt={service.title}
@@ -600,7 +650,7 @@ export const App = (): JSX.Element => {
                                                 stiffness: 300,
                                             }}
                                         />
-                                        <h3 className="[font-family:'Exo_2',Helvetica] font-bold text-card-foreground text-lg md:text-[22px] mb-4">
+                                        <h3 className="[font-family:'Exo_2',Helvetica] font-bold text-primary text-lg md:text-[22px] mb-4">
                                             {service.title}
                                         </h3>
                                         <p className="[font-family:'Nunito_Sans',Helvetica] font-normal text-card-foreground/80 text-sm md:text-lg leading-6">
@@ -728,11 +778,11 @@ export const App = (): JSX.Element => {
                                     {/* Sliding content */}
                                     <CardContent
                                         shine
-                                        className="absolute bottom-0 left-0 w-full bg-card/80 p-4 md:p-6 translate-y-[66%] lg:translate-y-[71%] group-hover:translate-y-0 transition-transform duration-500 ease-in-out"
+                                        className="absolute bottom-0 left-0 w-full bg-card/80 p-4 md:p-6 translate-y-[66%] lg:translate-y-[62%] group-hover:translate-y-0 transition-transform duration-500 ease-in-out"
                                     >
                                         <Badge
                                             variant="secondary"
-                                            className="mb-2 bg-primary/10 text-primary text-xs"
+                                            className="mb-2 bg-primary/40 text-card-foreground text-xs"
                                         >
                                             {project.category}
                                         </Badge>
@@ -740,11 +790,11 @@ export const App = (): JSX.Element => {
                                             {project.title}
                                         </h3>
 
-                                        <p className="[font-family:'Nunito_Sans',Helvetica] font-normal text-card-foreground/80 text-sm md:text-base leading-6 mb-6">
+                                        <p className="[font-family:'Nunito_Sans',Helvetica] font-normal text-card-foreground/80 text-sm md:text-base leading-6 mb-6 h-[100px]">
                                             {project.description}
                                         </p>
 
-                                        <div className="flex justify-between items-center mb-4">
+                                        {/* <div className="flex justify-between items-center mb-4">
                                             <div>
                                                 <p className="[font-family:'Exo_2',Helvetica] font-bold text-primary text-sm md:text-base">
                                                     CLIENT
@@ -761,14 +811,15 @@ export const App = (): JSX.Element => {
                                                     {project.date}
                                                 </p>
                                             </div>
-                                        </div>
+                                        </div> */}
 
                                         <motion.a
-                                            href="#"
+                                            href={project.link}
+                                            target="_blank"
                                             className="[font-family:'Nunito_Sans',Helvetica] font-bold text-primary text-sm md:text-lg hover:underline inline-flex items-center gap-2"
                                             whileHover={{ x: 5 }}
                                         >
-                                            {project.link}
+                                            Visit Website
                                             <ExternalLink className="w-4 h-4" />
                                         </motion.a>
                                     </CardContent>
@@ -819,7 +870,7 @@ export const App = (): JSX.Element => {
             </SectionReveal>
 
             {/* Testimonials Section */}
-            <SectionReveal>
+            {/*  <SectionReveal>
                 <section className="relative z-10 py-12 md:py-20 px-4 md:px-8">
                     <div className="max-w-[1140px] mx-auto text-center">
                         <Badge
@@ -847,7 +898,7 @@ export const App = (): JSX.Element => {
                                         <motion.img
                                             className="w-12 md:w-[61px] h-12 md:h-[61px] mx-auto mb-6"
                                             alt="Star"
-                                            src="/star-svgrepo-com-23.svg"
+                                            src="./star-svgrepo-com-23.svg"
                                             animate={{ rotate: 0 }}
                                             transition={{
                                                 duration: 0,
@@ -865,7 +916,7 @@ export const App = (): JSX.Element => {
                                                         key={starIndex}
                                                         className="w-6 h-6"
                                                         alt="Star"
-                                                        src="/star-svgrepo-com-23.svg"
+                                                        src="./star-svgrepo-com-23.svg"
                                                         initial={{
                                                             opacity: 0,
                                                             scale: 0,
@@ -901,7 +952,7 @@ export const App = (): JSX.Element => {
                         </div>
                     </div>
                 </section>
-            </SectionReveal>
+            </SectionReveal>  */}
 
             {/* Contact Section */}
             <SectionReveal>
@@ -1016,7 +1067,7 @@ export const App = (): JSX.Element => {
                         <motion.img
                             className="w-[120px] md:w-[153px] h-10 md:h-14 object-cover"
                             alt="Logo"
-                            src="/group-21-2.png"
+                            src="./group-21-2.png"
                             whileHover={{ scale: 1.05 }}
                             transition={{
                                 type: "spring",
@@ -1027,7 +1078,7 @@ export const App = (): JSX.Element => {
                         <motion.img
                             className="w-[100px] md:w-[121px] h-6 md:h-[27px]"
                             alt="Social Links"
-                            src="/frame-544.svg"
+                            src="./frame-544.svg"
                             whileHover={{ scale: 1.05 }}
                             transition={{
                                 type: "spring",
@@ -1039,66 +1090,70 @@ export const App = (): JSX.Element => {
                 </AnimatedCard>
             </footer> */}
 
-            <footer className="relative z-10  border-t border-gray-800">
+            <footer className="relative z-10">
                 <div className="container mx-auto px-6 py-12">
                     <div className="flex flex-col items-center text-center">
                         {/* Back to Top Button */}
 
                         {/* Logo/Brand */}
                         <div className="mb-8">
-                            <h2 className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                                Portfolio
-                            </h2>
+                            <motion.img
+                                // src="/group-21-2.png"
+                                src={
+                                    theme === "dark"
+                                        ? "./logo.png"
+                                        : "./logo-black.png"
+                                }
+                                alt="Logo"
+                                className="w-[120px] md:w-[153px] h-10 md:h-14 object-cover"
+                                whileHover={{ scale: 1.05 }}
+                                transition={{
+                                    type: "spring",
+                                    stiffness: 400,
+                                    damping: 17,
+                                }}
+                            />
                         </div>
 
                         {/* Navigation Links */}
-                        <nav className="mb-8">
-                            <div className="flex flex-wrap justify-center space-x-8 text-gray-400">
-                                {[
-                                    "Home",
-                                    "About",
-                                    "Projects",
-                                    "Skills",
-                                    "Contact",
-                                ].map((item) => (
-                                    <a
-                                        key={item}
-                                        href={`#${item.toLowerCase()}`}
-                                        className="hover:text-purple-400 transition-colors duration-300 py-2"
-                                    >
-                                        {item}
-                                    </a>
-                                ))}
-                            </div>
+                        <nav className="hidden lg:flex items-center gap-8 mb-8">
+                            {navigationItems.map((item, i) => (
+                                <motion.a
+                                    key={i}
+                                    href={item.href}
+                                    className="font-bold text-lg text-foreground hover:text-primary relative group transition-colors [font-family:'Nunito_Sans',Helvetica]"
+                                    whileHover={{ scale: 1.05 }}
+                                    initial={{ opacity: 0, y: -20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: i * 0.1 }}
+                                >
+                                    {item.label}
+                                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
+                                </motion.a>
+                            ))}
                         </nav>
 
                         {/* Social Links */}
-                        <div className="flex space-x-6 mb-8">
-                            {[
-                                { name: "GitHub", href: "#" },
-                                { name: "LinkedIn", href: "#" },
-                                { name: "Twitter", href: "#" },
-                                { name: "Instagram", href: "#" },
-                            ].map((social) => (
-                                <a
-                                    key={social.name}
-                                    href={social.href}
-                                    className="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-gradient-to-r hover:from-purple-600 hover:to-pink-600 transition-all duration-300 hover:scale-110 transform"
-                                    aria-label={social.name}
+                        <div className="flex flex-col md:flex-row gap-4 mb-8">
+                            {contactInfo.map(({ icon: Icon, href }, i) => (
+                                <AnimatedLink
+                                    key={i}
+                                    href={href}
+                                    className="flex items-center"
                                 >
-                                    {social.name[0]}
-                                </a>
+                                    <Icon className="w-5 h-5" />
+                                </AnimatedLink>
                             ))}
                         </div>
 
                         {/* Copyright */}
-                        <div className="border-t border-gray-800 pt-8 w-full">
+                        <div className="border-t border-black-800 pt-8 w-full">
                             <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-                                <p className="text-gray-500 text-sm">
-                                    © 2025 Portfolio. All rights reserved.
+                                <p className="text-foreground [font-family:'Nunito_Sans',Helvetica]">
+                                    © 2025 LS Dev. All rights reserved.
                                 </p>
-                                <p className="text-gray-500 text-sm flex items-center">
-                                    Made with by a passionate developer
+                                <p className="text-foreground flex items-center [font-family:'Nunito_Sans',Helvetica]">
+                                    Made with ❤️ by Lawrence
                                 </p>
                             </div>
                         </div>
