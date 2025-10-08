@@ -98,7 +98,7 @@ const toolsData = [
     { src: "./javascript-logo.png", alt: "Javascript logo" },
     { src: "./php-logo.png", alt: "Php logo" },
     { src: "./mysql-logo.png", alt: "Mysql logo edited" },
-    { src: ".cpanel-logo.png", alt: "Cpanel logo" },
+    { src: "./cpanel-logo.png", alt: "Cpanel logo" },
 ];
 
 const projectsData = [
