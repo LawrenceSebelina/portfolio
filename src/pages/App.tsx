@@ -26,6 +26,7 @@ import {
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useThemeContext } from "../context/ThemeContext";
+import TrailCursor from "../context/TrailCursor";
 
 const navigationItems = [
     { label: "About", href: "#about" },
@@ -213,6 +214,8 @@ export const App = (): JSX.Element => {
 
     return (
         <div className="bg-background text-foreground min-h-screen w-full transition-colors duration-300">
+            <TrailCursor />
+
             {/* Background Elements */}
             <div className="fixed inset-0 pointer-events-none overflow-hidden">
                 <FloatingElements />
@@ -372,7 +375,7 @@ export const App = (): JSX.Element => {
             </AnimatePresence>
 
             {/* Hero Section */}
-            <section className="relative z-10 flex flex-col items-center text-center py-12 md:py-20 max-w-full mx-auto min-h-[60vh] md:min-h-screen justify-center px-4 md:px-8">
+            <section className="relative z-10 flex flex-col items-center text-center py-12 md:py-28 max-w-full mx-auto min-h-[60vh] md:min-h-screen justify-center px-4 md:px-8">
                 <ScrollVideoBanner />
 
                 <div className="mb-8">
@@ -468,7 +471,9 @@ export const App = (): JSX.Element => {
 
             {/* About Section */}
             <SectionReveal>
-                <section className="relative z-10 bg-muted/30 pt-12 pb-20 lg:pb-0 md:pt-20 px-4 md:px-8">
+                <section className="relative z-10 bg-muted/30 pt-12 pb-20 lg:pb-0 md:pt-28 px-4 md:px-8">
+                    <div className="absolute left-0 bottom-0 w-full h-32 z-1 bg-gradient-to-t from-[hsl(var(--background))] to-transparent pointer-events-none"></div>
+
                     <div className="flex flex-col items-center text-center mb-12">
                         {/* Stats Section */}
                         <motion.div
@@ -615,7 +620,7 @@ export const App = (): JSX.Element => {
 
             {/* Services Section */}
             <SectionReveal>
-                <section className="relative z-10 py-12 md:py-20 px-4 md:px-8">
+                <section className="relative z-10 py-12 md:py-28 px-4 md:px-8">
                     <div className="max-w-[1140px] mx-auto">
                         <Badge
                             variant="secondary"
@@ -666,7 +671,7 @@ export const App = (): JSX.Element => {
 
             {/* Tools Section */}
             <SectionReveal>
-                <section className="relative z-10 py-12 md:py-20 px-4 md:px-8">
+                <section className="relative z-10 py-12 md:py-28 px-4 md:px-8">
                     <div className="max-w-[1140px] mx-auto text-center">
                         <Badge
                             variant="secondary"
@@ -742,7 +747,7 @@ export const App = (): JSX.Element => {
 
             {/* Projects Section */}
             <SectionReveal>
-                <section className="relative z-10 bg-muted/30 py-12 md:py-20 px-4 md:px-8">
+                <section className="relative z-10 bg-muted/30 py-12 md:py-28 px-4 md:px-8">
                     <div className="max-w-[1140px] mx-auto">
                         <Badge
                             variant="secondary"
@@ -832,7 +837,7 @@ export const App = (): JSX.Element => {
 
             {/* CTA Section */}
             <SectionReveal>
-                <section className="relative z-10 py-12 md:py-20 px-4 md:px-8">
+                <section className="relative z-10 py-12 md:py-28 px-4 md:px-8">
                     <div className="max-w-[1140px] mx-auto">
                         <AnimatedCard
                             className="bg-card border rounded-[10px] p-6 md:p-16"
@@ -871,7 +876,7 @@ export const App = (): JSX.Element => {
 
             {/* Testimonials Section */}
             {/*  <SectionReveal>
-                <section className="relative z-10 py-12 md:py-20 px-4 md:px-8">
+                <section className="relative z-10 py-12 md:py-28 px-4 md:px-8">
                     <div className="max-w-[1140px] mx-auto text-center">
                         <Badge
                             variant="secondary"
@@ -956,7 +961,7 @@ export const App = (): JSX.Element => {
 
             {/* Contact Section */}
             <SectionReveal>
-                <section className="relative z-10 py-12 md:py-20 px-4 md:px-8">
+                <section className="relative z-10 py-12 md:py-28 px-4 md:px-8">
                     <div className="max-w-[1140px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-16">
                         <div className="flex flex-col justify-center align-middle">
                             <div>
