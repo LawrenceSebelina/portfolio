@@ -182,11 +182,11 @@ const testimonialsData = [
 const contactInfo = [
     {
         icon: Facebook,
-        href: "mailto:hello@portfolio.com",
+        href: "#",
     },
     {
         icon: Mail,
-        href: "tel:+15551234567",
+        href: "mailto:lawrencesebelina1st@gmail.com",
     },
     {
         icon: Linkedin,
