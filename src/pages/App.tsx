@@ -31,8 +31,8 @@ import TrailCursor from "../context/TrailCursor";
 const navigationItems = [
     { label: "About", href: "#about" },
     { label: "Services", href: "#services" },
+    { label: "Tools", href: "#tools" },
     { label: "Projects", href: "#projects" },
-    { label: "Contact", href: "#contact" },
 ];
 
 const statsData = [
@@ -309,9 +309,16 @@ export const App = (): JSX.Element => {
                     <div className="flex items-center gap-4">
                         <ThemeToggle />
 
-                        <AnimatedButton className="hidden md:flex bg-primary hover:bg-primary/90 text-primary-foreground px-6 md:px-10 py-3 md:py-4 h-auto rounded-[5px]">
+                        <AnimatedButton
+                            onClick={() => {
+                                document
+                                    .querySelector("#contact")
+                                    ?.scrollIntoView({ behavior: "smooth" });
+                            }}
+                            className="hidden md:flex bg-primary hover:bg-primary/90 text-primary-foreground px-6 md:px-10 py-3 md:py-4 h-auto rounded-[5px]"
+                        >
                             <span className="font-bold text-sm md:text-lg">
-                                Get Started
+                                Contact Me
                             </span>
                         </AnimatedButton>
 
@@ -458,6 +465,11 @@ export const App = (): JSX.Element => {
                         </span>
                     </AnimatedButton>
                     <AnimatedButton
+                        onClick={() => {
+                            document
+                                .querySelector("#contact")
+                                ?.scrollIntoView({ behavior: "smooth" });
+                        }}
                         variant="outline"
                         className="bg-transparent border-primary text-foreground hover:bg-transparent hover:text-primary-foreground px-6 md:px-10 py-3 md:py-4 h-auto rounded-[5px] w-full sm:w-auto"
                     >
@@ -471,7 +483,10 @@ export const App = (): JSX.Element => {
 
             {/* About Section */}
             <SectionReveal>
-                <section className="relative z-10 bg-muted/30 pt-12 pb-20 lg:pb-0 md:pt-28 px-4 md:px-8">
+                <section
+                    className="relative z-10 bg-muted/30 pt-12 pb-20 lg:pb-0 md:pt-28 px-4 md:px-8"
+                    id="about"
+                >
                     <div className="absolute left-0 bottom-0 w-full h-32 z-1 bg-gradient-to-t from-[hsl(var(--background))] to-transparent pointer-events-none"></div>
 
                     <div className="flex flex-col items-center text-center mb-12">
@@ -620,7 +635,10 @@ export const App = (): JSX.Element => {
 
             {/* Services Section */}
             <SectionReveal>
-                <section className="relative z-10 py-12 md:py-28 px-4 md:px-8">
+                <section
+                    className="relative z-10 py-12 md:py-28 px-4 md:px-8"
+                    id="services"
+                >
                     <div className="max-w-[1140px] mx-auto">
                         <Badge
                             variant="secondary"
@@ -671,7 +689,10 @@ export const App = (): JSX.Element => {
 
             {/* Tools Section */}
             <SectionReveal>
-                <section className="relative z-10 py-12 md:py-28 px-4 md:px-8">
+                <section
+                    className="relative z-10 py-12 md:py-28 px-4 md:px-8"
+                    id="tools"
+                >
                     <div className="max-w-[1140px] mx-auto text-center">
                         <Badge
                             variant="secondary"
@@ -747,7 +768,10 @@ export const App = (): JSX.Element => {
 
             {/* Projects Section */}
             <SectionReveal>
-                <section className="relative z-10 bg-muted/30 py-12 md:py-28 px-4 md:px-8">
+                <section
+                    className="relative z-10 bg-muted/30 py-12 md:py-28 px-4 md:px-8"
+                    id="projects"
+                >
                     <div className="max-w-[1140px] mx-auto">
                         <Badge
                             variant="secondary"
@@ -961,7 +985,10 @@ export const App = (): JSX.Element => {
 
             {/* Contact Section */}
             <SectionReveal>
-                <section className="relative z-10 py-12 md:py-28 px-4 md:px-8">
+                <section
+                    className="relative z-10 py-12 md:py-28 px-4 md:px-8"
+                    id="contact"
+                >
                     <div className="max-w-[1140px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-16">
                         <div className="flex flex-col justify-center align-middle">
                             <div>
